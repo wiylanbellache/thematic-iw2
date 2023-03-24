@@ -8,6 +8,12 @@ import {
   CreateRequest,
   CreateResponse,
   Task as PbTask,
+  FindByIdRequest,
+  FindByIdResponse,
+  UpdateRequest,
+  UpdateResponse,
+  DeleteRequest,
+  DeleteResponse,
 } from './stub/task/task';
 
 @Controller()
@@ -44,5 +50,50 @@ export class AppController {
     return {
       task: this.toPb(task),
     };
+  }
+
+  @GrpcMethod('TaskService')
+  async FindById(req: FindByIdRequest): Promise<FindByIdResponse> {
+    const { id } = req;
+    const task = await this.appService.task({
+      id: +id,
+    });
+
+    return {
+      task: this.toPb(task),
+    };
+  }
+
+  @GrpcMethod('TaskService')
+  async Update(req: UpdateRequest): Promise<UpdateResponse> {
+    const { id } = req;
+    const update = {
+      ...req,
+      id: undefined,
+    };
+
+    Object.keys(update).forEach(
+      (key) => update[key] === undefined && delete update[key],
+    );
+
+    const task = await this.appService.updateTask({
+      where: {
+        id: +id,
+      },
+      data: update,
+    });
+
+    return { task: this.toPb(task) };
+  }
+
+  @GrpcMethod('TaskService')
+  async Delete(req: DeleteRequest): Promise<DeleteResponse> {
+    const { id } = req;
+
+    const task = await this.appService.deleteTask({
+      id: +id,
+    });
+
+    return { task: this.toPb(task) };
   }
 }
