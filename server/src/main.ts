@@ -9,10 +9,13 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
+        url: `0.0.0.0:3000`,
         package: 'task',
         protoPath: join(__dirname, 'proto/task.proto'),
       },
     },
   );
+
+  await app.listen();
 }
 bootstrap();
