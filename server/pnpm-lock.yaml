@@ -11,6 +11,8 @@ specifiers:
   '@nestjs/schematics': ^9.0.0
   '@nestjs/testing': ^9.0.0
   '@prisma/client': ^4.11.0
+  '@protobuf-ts/runtime': ^2.8.3
+  '@protobuf-ts/runtime-rpc': ^2.8.3
   '@types/express': ^4.17.13
   '@types/jest': 29.2.4
   '@types/node': 18.11.18
@@ -41,6 +43,8 @@ dependencies:
   '@nestjs/microservices': 9.3.12_x3t524gp3mqdsvpvhr3fhwoogy
   '@nestjs/platform-express': 9.3.12_ge4qplnzbmfyi5znl534zhtkn4
   '@prisma/client': 4.11.0_prisma@4.11.0
+  '@protobuf-ts/runtime': 2.8.3
+  '@protobuf-ts/runtime-rpc': 2.8.3
   reflect-metadata: 0.1.13
   rxjs: 7.8.0
 
@@ -1140,6 +1144,16 @@ packages:
   /@prisma/engines/4.11.0:
     resolution: {integrity: sha512-0AEBi2HXGV02cf6ASsBPhfsVIbVSDC9nbQed4iiY5eHttW9ZtMxHThuKZE1pnESbr8HRdgmFSa/Kn4OSNYuibg==}
     requiresBuild: true
+
+  /@protobuf-ts/runtime-rpc/2.8.3:
+    resolution: {integrity: sha512-Tb6nuevgezjGNnT8WF+aveGWeI5xeAbNpySd/nzknKx6ynepXdlNz5cN0xIADeOgDJHo/05Ka+vZ5ZI33tz2Og==}
+    dependencies:
+      '@protobuf-ts/runtime': 2.8.3
+    dev: false
+
+  /@protobuf-ts/runtime/2.8.3:
+    resolution: {integrity: sha512-nVL1s5wWpF6U+wtWTEWfUPD9Ockckj+fHqhzgm41CKV4Oma3D/2M6tzqOQ+wrm4GZu1bt+s6f43feNnar6fhjA==}
+    dev: false
 
   /@protobufjs/aspromise/1.1.2:
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
