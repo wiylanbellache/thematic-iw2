@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package task;
+
+message Task {
+  string id = 1;
+  string due_date = 2;
+  bool done = 3;
+  string description = 4;
+}
+
+service TaskService {
+  rpc FindAll(FindAllRequest) returns (FindAllResponse) {}
+  rpc FindById(FindByIdRequest) returns (FindByIdResponse) {}
+  rpc Create(CreateRequest) returns (CreateResponse) {}
+  rpc Update(UpdateRequest) returns (UpdateResponse) {}
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+}
+
+message FindAllRequest {
+  bool done = 1;
+}
+
+message FindAllResponse {
+  repeated Task tasks = 1;
+}
+
+message FindByIdRequest {
+  string id = 1;
+}
+
+message FindByIdResponse {
+  Task task = 1;
+}
+
+message CreateRequest {
+  string due_date = 1;
+  string description = 2;
+}
+
+message CreateResponse {
+  Task task = 1;
+}
+
+message UpdateRequest {
+  string due_date = 1;
+  string description = 2;
+  bool done = 3;
+  string id = 4;
+}
+
+message UpdateResponse {
+  Task task = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message DeleteResponse {
+  Task task = 1;
+}
